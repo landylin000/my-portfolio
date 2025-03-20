@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人形象網站</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 引入 Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- 引入 GSAP (GreenSock) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #f9f6ee;
+        font-family: "ZCOOL KuaiLe", sans-serif;
+      }
+      /* 桌機版 Hero 區塊：固定在左側 */
+      @media (min-width: 768px) {
+        .parallax {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 40%;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          background: #f9f6ee;
+          z-index: 10;
+        }
+        .content {
+          margin-left: 40%;
+          padding: 50px;
+        }
+      }
+      /* 手機版 Hero 區塊：使用現代化背景漸層 */
+      @media (max-width: 767px) {
+        .parallax {
+          position: relative;
+          width: 100%;
+          height: auto;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          padding: 80px 20px 40px;
+          color: white;
+          text-align: center;
+        }
+        .content {
+          margin: 0;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans">
+    <!-- 手機版固定頂部導覽列 -->
+    <header
+      class="md:hidden flex items-center justify-between p-4 bg-white shadow-md fixed top-0 left-0 right-0 z-20"
+    >
+      <h1 class="text-xl font-bold text-gray-800">Lannie</h1>
+      <button id="menuButton" class="text-gray-800 focus:outline-none">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </header>
+    <!-- 手機版導覽選單遮罩 -->
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-black bg-opacity-70 z-30 hidden md:hidden"
+    >
+      <div class="bg-white w-3/4 h-full p-6">
+        <button id="closeMenu" class="mb-4 text-gray-800">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <nav>
+          <ul class="space-y-4">
+            <li>
+              <a href="#experience" class="text-gray-800 text-lg">Experience</a>
+            </li>
+            <li><a href="#skills" class="text-gray-800 text-lg">Skills</a></li>
+            <li>
+              <a href="#portfolio" class="text-gray-800 text-lg">Portfolio</a>
+            </li>
+            <li>
+              <a href="#contact" class="text-gray-800 text-lg">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero 區塊 -->
+    <div class="parallax">
+      <section class="hero-text">
+        <img
+          src="unnamed.jpg"
+          alt="個人頭像"
+          class="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full mx-auto mb-4"
+        />
+        <h2 class="text-3xl font-bold opacity-0">I'm Lannie</h2>
+        <p class="mt-2 text-xl md:text-gray-700 text-[#f9f6ee]">
+          <span id="typed-text" class="text-[#f9f6ee] md:text-blue-600"></span>
+        </p>
+        <div class="mt-4 flex justify-center space-x-3 opacity-0">
+          <button class="bg-black text-white px-4 py-2 rounded-lg">
+            Talk with me
+          </button>
+          <button class="border border-black text-black px-4 py-2 rounded-lg">
+            See my work
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- 右側內容 -->
+    <div class="content pt-20 md:pt-0">
+      <!-- 桌機版導覽列 -->
+      <nav class="hidden md:flex justify-end items-center py-6">
+        <ul class="flex space-x-6">
+          <li><a href="#experience" class="hover:underline">Experience</a></li>
+          <li><a href="#skills" class="hover:underline">Skills</a></li>
+          <li><a href="#portfolio" class="hover:underline">Portfolio</a></li>
+          <li><a href="#contact" class="hover:underline">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- 工作經歷 -->
+      <section id="experience" class="mt-10">
+        <h3 class="text-xl font-bold mb-4">Working Experience</h3>
+        <div class="space-y-4">
+          <div
+            class="flex flex-col md:flex-row items-center md:items-start bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full text-2xl"
+            >
+              💻
+            </div>
+            <div class="mt-2 md:mt-0 md:ml-4">
+              <h4 class="text-lg font-semibold">穎創資訊服務有限公司</h4>
+              <p class="text-gray-600">2024.07 - now</p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row items-center md:items-start bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full text-2xl"
+            >
+              🏥
+            </div>
+            <div class="mt-2 md:mt-0 md:ml-4">
+              <h4 class="text-lg font-semibold">
+                資展國際(原資策會)前端工程師養成班
+              </h4>
+              <p class="text-gray-600">2023.12-2024.05</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 專業技能 -->
+      <section id="skills" class="mt-10">
+        <h3 class="text-xl font-bold mb-4">Professional Skills</h3>
+        <div class="grid grid-cols-2 gap-6">
+          <!-- HTML & CSS -->
+          <div
+            class="flex flex-col items-center bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              class="w-12 h-12"
+              alt="HTML & CSS"
+            />
+            <p class="mt-2 text-center">HTML & CSS</p>
+          </div>
+          <!-- JavaScript -->
+          <div
+            class="flex flex-col items-center bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              class="w-12 h-12"
+              alt="JavaScript"
+            />
+            <p class="mt-2 text-center">JavaScript</p>
+          </div>
+          <!-- Vue.js -->
+          <div
+            class="flex flex-col items-center bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+              class="w-12 h-12"
+              alt="Vue.js"
+            />
+            <p class="mt-2 text-center">Vue.js</p>
+          </div>
+          <!-- Bootstrap 5 -->
+          <div
+            class="flex flex-col items-center bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
+              class="w-12 h-12"
+              alt="Bootstrap 5"
+            />
+            <p class="mt-2 text-center">Bootstrap 5</p>
+          </div>
+          <!-- Git -->
+          <div
+            class="flex flex-col items-center bg-[#fffaf0] p-4 rounded-lg shadow"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+              class="w-12 h-12"
+              alt="Git"
+            />
+            <p class="mt-2 text-center">Git</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="mt-10">
+        <h3 class="text-xl font-bold mb-4">Selected Works</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 作品 1 -->
+          <a
+            href="https://你的部屬網址1"
+            target="_blank"
+            class="relative block bg-[#fffaf0] rounded-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 duration-300"
+          >
+            <img
+              src="project1.jpg"
+              class="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
+              alt="Project 1"
+            />
+            <div class="p-4">
+              <h4 class="text-lg font-semibold">Project 1 - 互動網站</h4>
+              <p class="text-gray-600">Vue.js + Firebase + TailwindCSS</p>
+            </div>
+          </a>
+
+          <!-- 作品 2 -->
+          <a
+            href="https://你的部屬網址2"
+            target="_blank"
+            class="relative block bg-[#fffaf0] rounded-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 duration-300"
+          >
+            <img
+              src="project2.jpg"
+              class="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
+              alt="Project 2"
+            />
+            <div class="p-4">
+              <h4 class="text-lg font-semibold">Project 2 - 響應式作品集</h4>
+              <p class="text-gray-600">Bootstrap 5 + Django</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 聯絡方式 -->
+      <section id="contact" class="mt-10">
+        <h3 class="text-xl font-bold mb-4">Contact Me</h3>
+        <div class="bg-[#fffaf0] p-6 rounded-lg shadow space-y-4">
+          <!-- Email -->
+          <div class="flex items-center space-x-2">
+            <!-- Heroicon: Mail -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-gray-600"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+              />
+            </svg>
+            <span class="text-gray-800 text-lg">
+              Email:
+              <a
+                href="mailto:your_email@example.com"
+                class="text-blue-600 hover:underline"
+              >
+                your_email@example.com
+              </a>
+            </span>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-center space-x-2">
+            <!-- Heroicon: Phone -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-gray-600"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+              />
+            </svg>
+            <span class="text-gray-800 text-lg">Phone: 0912-345678</span>
+          </div>
+
+          <!-- GitHub -->
+          <div class="flex items-center space-x-2">
+            <!-- Heroicon: Code (或自行換 GitHub Icon) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-gray-600"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 18l6-6-6-6M8 6l-6 6 6 6"
+              />
+            </svg>
+            <span class="text-gray-800 text-lg">
+              GitHub:
+              <a
+                href="https://github.com/landylin000"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+              >
+                landylin000
+              </a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 頁腳 -->
+      <footer class="mt-10 p-6 bg-black text-white text-center">
+        <p>&copy; 2025 Lannie. All Rights Reserved.</p>
+      </footer>
+      <!-- 滾動結尾的 Sentinel，當進入視野時觸發彩蛋 -->
+      <div id="sentinel" class="h-1"></div>
+    </div>
+    <!-- 全螢幕彩蛋訊息 -->
+    <div
+      id="easterEgg"
+      class="hidden fixed inset-0 flex flex-col items-center justify-center space-y-4 bg-black bg-opacity-50 text-white text-center text-4xl font-bold"
+    >
+      <p>謝謝你看完</p>
+      <!-- 初始隱藏的關閉按鈕 -->
+      <button
+        id="closeEgg"
+        class="hidden mt-4 px-4 py-2 bg-black border border-white rounded-lg text-xl"
+      >
+        關閉
+      </button>
+      <div
+        id="particles-js"
+        class="absolute top-0 left-0 w-full h-full -z-10"
+      ></div>
+    </div>
+
+    <!-- 引入 canvas-confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+      // 手機漢堡選單
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      closeMenu.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+
+      // 打字動畫（Typed.js）
+      var typed = new Typed("#typed-text", {
+        strings: ["Front-end Developer"],
+        typeSpeed: 80, // 打字速度
+        backSpeed: 40, // 刪除速度
+        loop: true, // 讓它循環播放
+      });
+
+      // 進場動畫（GSAP）
+      gsap.to(".hero-text h2", { opacity: 1, y: -10, duration: 1 });
+      gsap.to(".hero-text p", {
+        opacity: 1,
+        y: -10,
+        duration: 1.2,
+        delay: 0.3,
+      });
+      gsap.to(".hero-text div", {
+        opacity: 1,
+        y: -10,
+        duration: 1.5,
+        delay: 0.6,
+      });
+
+      // 當使用者滾動到頁面底部，觸發彩蛋訊息與 confetti 效果
+      const sentinel = document.getElementById("sentinel");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 顯示彩蛋訊息
+            const easterEgg = document.getElementById("easterEgg");
+            easterEgg.classList.remove("hidden");
+            // 觸發 confetti 效果
+            confetti({
+              particleCount: 150,
+              spread: 70,
+              origin: { y: 0.6 },
+            });
+            // 1秒後顯示關閉按鈕
+            setTimeout(() => {
+              document.getElementById("closeEgg").classList.remove("hidden");
+            }, 1000);
+            // 停止監測，僅觸發一次
+            observer.disconnect();
+          }
+        });
+      });
+      observer.observe(sentinel);
+
+      // 點擊關閉按鈕後隱藏彩蛋訊息
+      document.getElementById("closeEgg").addEventListener("click", () => {
+        document.getElementById("easterEgg").classList.add("hidden");
+      });
+      observer.observe(sentinel);
+    </script>
+  </body>
+</html>
