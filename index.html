@@ -132,12 +132,35 @@
           <span id="typed-text" class="text-[#f9f6ee] md:text-blue-600"></span>
         </p>
         <div class="mt-4 flex justify-center space-x-3 opacity-0">
-          <button class="bg-black text-white px-4 py-2 rounded-lg">
+          <button
+            id="talkWithMe"
+            class="bg-black text-white px-4 py-2 rounded-lg"
+          >
             Talk with me
           </button>
           <button class="border border-black text-black px-4 py-2 rounded-lg">
             See my work
           </button>
+        </div>
+        <!-- 隱藏的 LINE QR Code Modal -->
+        <div
+          id="lineQRCodeModal"
+          class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        >
+          <div class="bg-white p-6 rounded-lg text-center">
+            <h2 class="text-xl font-bold mb-4">掃描 QR Code 加 LINE</h2>
+            <img
+              src="你的_LINE_QR_Code_圖片.png"
+              alt="LINE QR Code"
+              class="w-40 h-40 mx-auto mb-4"
+            />
+            <button
+              id="closeQRCode"
+              class="mt-4 px-4 py-2 bg-gray-500 text-white rounded"
+            >
+              關閉
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -431,6 +454,27 @@
         duration: 1.5,
         delay: 0.6,
       });
+
+      document
+        .getElementById("talkWithMe")
+        .addEventListener("click", function () {
+          if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+            // 手機版 - 直接開啟 LINE 聊天
+            window.location.href = "line://ti/p/~你的LINE_ID";
+          } else {
+            // 電腦版 - 顯示 QR Code
+            document
+              .getElementById("lineQRCodeModal")
+              .classList.remove("hidden");
+          }
+        });
+
+      // 點擊 "關閉" 按鈕隱藏 QR Code
+      document
+        .getElementById("closeQRCode")
+        .addEventListener("click", function () {
+          document.getElementById("lineQRCodeModal").classList.add("hidden");
+        });
 
       // 當使用者滾動到頁面底部，觸發彩蛋訊息與 confetti 效果
       const sentinel = document.getElementById("sentinel");
