@@ -150,7 +150,7 @@
           <div class="bg-white p-6 rounded-lg text-center">
             <h2 class="text-xl font-bold mb-4">掃描 QR Code 加 LINE</h2>
             <img
-              src="你的_LINE_QR_Code_圖片.png"
+              src="QR.jpg"
               alt="LINE QR Code"
               class="w-40 h-40 mx-auto mb-4"
             />
@@ -261,18 +261,20 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- 作品 1 -->
           <a
-            href="https://你的部屬網址1"
+            href="https://lmspro-188d7.web.app/tasks"
             target="_blank"
             class="relative block bg-[#fffaf0] rounded-lg shadow hover:shadow-lg transition-transform transform hover:-translate-y-1 duration-300"
           >
             <img
-              src="project1.jpg"
+              src="web-pomodoro.png"
               class="w-full h-48 object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
               alt="Project 1"
             />
             <div class="p-4">
-              <h4 class="text-lg font-semibold">Project 1 - 互動網站</h4>
-              <p class="text-gray-600">Vue.js + Firebase + TailwindCSS</p>
+              <h4 class="text-lg font-semibold">pomodoro 番茄鐘任務管理</h4>
+              <p class="text-gray-600">
+                React.js、Next.js、TailwindCSS、Firebase、RWD、PWD
+              </p>
             </div>
           </a>
 
@@ -390,7 +392,7 @@
       id="easterEgg"
       class="hidden fixed inset-0 flex flex-col items-center justify-center space-y-4 bg-black bg-opacity-50 text-white text-center text-4xl font-bold"
     >
-      <p>謝謝你看完</p>
+      <p></p>
       <!-- 初始隱藏的關閉按鈕 -->
       <button
         id="closeEgg"
@@ -460,7 +462,7 @@
         .addEventListener("click", function () {
           if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
             // 手機版 - 直接開啟 LINE 聊天
-            window.location.href = "line://ti/p/~你的LINE_ID";
+            window.location.href = "line://ti/p/~landy062";
           } else {
             // 電腦版 - 顯示 QR Code
             document
